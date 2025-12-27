@@ -1,59 +1,99 @@
-# Mindful QA – Accessibility-First UI Automation
+# Mindful QA – Playwright UI Automation for Mental Health Web App
 
-This project demonstrates an accessibility-first approach to UI automation, where WCAG compliance is treated as a release-quality signal rather than a post-release audit.
+## Purpose
 
-The goal is to show how accessibility checks can be embedded directly into regression workflows for user-sensitive applications such as mental wellness platforms.
+This repository contains **Playwright-based UI automation** for a web application
+focused on **mental health check-ins**.
 
----
+The automation validates **user-facing emotional input workflows**, such as:
+- Selecting mood levels via emojis
+- Capturing reflective statements
+- Persisting and reloading user input
 
-## Business Context
-
-In healthcare-adjacent and user-sensitive applications, accessibility failures are not cosmetic issues — they directly impact usability, trust, and compliance.
-
-This project focuses on validating:
-- Screen reader compatibility
-- Keyboard navigation
-- Color contrast and semantic structure
-
-as part of automated regression, not manual review.
+The goal is to demonstrate how **UI automation can be applied responsibly**
+to sensitive, user-centric applications.
 
 ---
 
-## Technical Approach
+## What This Project Automates
 
-- Playwright-based UI automation
-- Automated WCAG checks integrated into test flows
-- Accessibility assertions executed alongside functional validations
-- Tests designed to run deterministically in CI environments
+The automated scenarios focus on **core user behavior**, not visual design.
 
-Accessibility failures are treated as test failures, not informational warnings.
+### Key Flows Covered
+- Emoji-based mood selection  
+  (Low / Medium / High emotional states)
+- Entry of short reflective statements
+- Saving user responses
+- Reloading the page and verifying persisted state
 
----
-
-## Why This Matters
-
-Most UI automation validates *what* is rendered.
-This project validates *who can use it*.
-
-By embedding accessibility into automation:
-- Quality risks are surfaced earlier
-- Accessibility becomes an engineering responsibility
-- Teams avoid last-minute compliance surprises
+These flows represent **real user intent**, not synthetic test actions.
 
 ---
 
-## What This Project Is Not
+## Automation Approach
 
-- Not a demo app
-- Not a checklist-style accessibility scan
-- Not a replacement for manual audits
-
-It is a practical example of making accessibility a first-class citizen in automated testing.
+### Tooling
+- **Playwright**
+- **Java**
+- **TestNG**
+- Playwright recorder for baseline flows
 
 ---
 
-## Tools Used
+### Test Design Principles
 
-- Playwright
-- JavaScript / TypeScript
-- WCAG accessibility principles
+- **Behavior-first validation**  
+  Tests validate what a user experiences, not internal implementation.
+
+- **Minimal abstraction**  
+  UI interactions are kept readable to preserve intent and clarity.
+
+- **Stable locators**  
+  Selectors prioritize accessibility roles and semantic attributes.
+
+- **Deterministic assertions**  
+  Assertions verify persisted state rather than transient UI animations.
+
+---
+
+## Example Test Flow
+
+1. Launch mental health web application  
+2. Select an emoji representing emotional state (Low / Medium / High)  
+3. Enter a reflective statement  
+4. Save the response  
+5. Reload or revisit the page  
+6. Assert that:
+   - Selected emoji remains consistent
+   - Statement content is preserved  
+
+This mirrors a real user check-in session.
+
+---
+
+## Use of Playwright Recorder
+
+Playwright’s recording capability is used intentionally:
+- To capture **baseline user journeys**
+- To compare **manual interaction vs automated execution**
+- As a learning and debugging aid, not as final test code
+
+Recorded flows are refined and cleaned before being committed.
+
+---
+
+## What This Automation Avoids
+
+- Over-asserting on visual styling
+- Fragile timing-based waits
+- Excessive abstraction that hides user intent
+- Treating emotional input flows like generic CRUD operations
+
+These decisions are especially important for **mental health–related software**.
+
+---
+
+## Running the Tests
+
+```bash
+mvn clean test
