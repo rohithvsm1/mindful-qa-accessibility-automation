@@ -1,11 +1,12 @@
 {
   "name": "mindful-qa-accessibility-automation",
   "version": "1.0.0",
-  "description": "WCAG validation using Playwright",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "test:ci": "playwright test --project=chromium"
   },
   "devDependencies": {
+    "@playwright/test": "^1.47.0",
     "@playwright/test": "^1.47.0"
   }
 }
