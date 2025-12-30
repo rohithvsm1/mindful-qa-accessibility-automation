@@ -1,8 +1,8 @@
 module.exports = {
   testDir: './tests',
-  use: {
-    headless: true,
-    viewport: { width: 1280, height: 720 },
+  use: { 
+    baseURL: 'https://www.w3.org/WAI/',
+    headless: true 
   },
-  reporter: [['html'], ['json']]
+  projects: [{ name: 'chromium', use: { browserName: 'chromium' } }]
 };
