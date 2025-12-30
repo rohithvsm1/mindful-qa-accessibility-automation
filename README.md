@@ -13,21 +13,29 @@ Accessibility as release gate - 50+ WCAG checks
 
 # 1. Setup Playwright
 npm init -y
+
 npm i @playwright/test @axe-core/playwright
 
 # 2. Config (playwright.config.js)
 module.exports = {
+
   use: { 
+  
     accessibility: { runs: 2 },
+    
     trace: 'on-first-retry'
   },
+  
   projects: ['chromium', 'firefox', 'webkit']
+  
 };
 
 # 3. Run WCAG Suite
+
 npx playwright test accessibility.spec.js
 
 # 4. CI/CD Workflow
+
 .github/workflows/accessibility-ci.yml
 
 🔥 TECHNICAL FEATURES
